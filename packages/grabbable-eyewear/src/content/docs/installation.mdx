@@ -1,0 +1,49 @@
+---
+title: 導入方法
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## 要件
+
+- メガネの3Dモデルを持っている
+- [Modular Avatar](https://modular-avatar.nadena.dev) が導入されている
+- `Expression Parameters` に `2` 以上の空きがある
+    - パフォーマンスランクへの影響は [パフォーマンスランクへの影響](references/performance-rank) をご確認ください。
+
+## アバターに導入する
+
+1. `HiroMelon/GrabbableEyewear/` フォルダにある`GrabbableEyewear` プレハブをアバター直下に配置してください。
+2. `GrabbableEyewear/Eyewear/Model` 直下に使いたいメガネを配置してください。
+    - メガネに MA Bone Proxy コンポーネントが含まれている場合、必ず削除してください。
+3. 配置したメガネの Transform コンポーネントの Position を `0` `0` `0` にしてください。
+    - メガネの位置調整は後述の手順で行います。
+
+## メガネの位置調整
+
+### メガネをかける位置を調整する
+
+1. `GrabbableEyewear/ConstraintSrc/Head/PBRoot/PBEnd/EyewearHeadPos` を移動及び回転させて位置調整してください。
+
+:::tip
+既にかけているメガネに本ギミックを導入する場合、そのメガネの World Transform をコピー&ペーストすることで簡単に位置調整ができます。
+:::
+
+### 右手に持つ位置を調整する
+
+1. `GrabbableEyewear/Eyewear/Constraint` の `VRC Parent Constraint` コンポーネントの Sources の3つのWeightを上から `0` `1` `0` に変更し、メガネを右手に持つ位置へ移動させます。
+2. `GrabbableEyewear/ConstraintSrc/HandR/EyewearHandRPos` を移動及び回転させて位置調整してください。
+
+### 左手に持つ位置を調整する
+
+1. `GrabbableEyewear/Eyewear/Constraint` の `VRC Parent Constraint` コンポーネントの Sources の3つのWeightを上から `0` `1` `0` に変更し、メガネを右手に持つ位置へ移動させます。
+2. `GrabbableEyewear/ConstraintSrc/HandL/EyewearHandLPos` を移動及び回転させて位置調整してください。
+
+### Constraint を元に戻す
+
+位置調整完了後、 `VRC Parent Constraint` コンポーネント の Sources の Weight を上から `1` `0` `0` に戻してください。  
+戻さなくてもギミックに問題は発生しませんが、今後の調整が困難になります。
+
+### その他の細かい調整方法
+
+その他、判定などの調整方法に [細かく調整する](references/adjustment) を参照してください。
