@@ -3,7 +3,8 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   root: '.',
-  base: '/grabbable-eyewear',
+  base: '/vrc-items-doc/grabbable-eyewear/',
+  trailingSlash: 'always',
   site: 'https://hirom320.github.io',
   integrations: [
     starlight({
