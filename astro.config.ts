@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 const repo = 'grabbable-eyewear' as const;
 const base = `${repo}/` as const;
 const github_link = `https://github.com/HiroM320/${repo}` as const;
+const booth_link = `https://hiromelon.booth.pm/items/6832055` as const;
 
 export default defineConfig({
   root: '.',
@@ -13,7 +14,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Grabbable Eyewear',
-      social: [{ icon: 'github', label: 'GitHub', href: github_link }],
+      social: [
+        { icon: 'github', label: 'GitHub', href: github_link },
+        { icon: 'external', label: 'Booth', href: booth_link }
+      ],
       sidebar: [
         {slug: 'installation'},
         {slug: 'feature'},
