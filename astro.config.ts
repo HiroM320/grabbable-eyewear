@@ -20,7 +20,6 @@ export default defineConfig({
         {slug: 'changelog'},
         {
           label: 'リファレンス',
-          collapsed: true,
           items: [
             {slug: 'references/adjustment'},
             {slug: 'references/performance-rank'},
