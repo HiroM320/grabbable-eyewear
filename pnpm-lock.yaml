@@ -6,9 +6,7 @@ settings:
 
 importers:
 
-  .: {}
-
-  packages/grabbable-eyewear:
+  .:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.34.1

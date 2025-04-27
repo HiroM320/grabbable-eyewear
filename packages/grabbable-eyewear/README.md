@@ -1,1 +1,0 @@
-# 掴めるメガネ GrabbableEyewear

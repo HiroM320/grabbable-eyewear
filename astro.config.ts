@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-const repo = 'vrc-items-doc' as const;
-const project = 'grabbable-eyewear' as const;
-const base = `${repo}/${project}/` as const;
-const github_link = `https://github.com/HiroM320/${repo}/tree/main/packages/${project}` as const;
+const repo = 'grabbable-eyewear' as const;
+const base = `${repo}/` as const;
+const github_link = `https://github.com/HiroM320/${repo}` as const;
 
 export default defineConfig({
   root: '.',

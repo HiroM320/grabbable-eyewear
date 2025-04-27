@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/workflows/deploy-grabbable-eyewear.yml
-      - packages/grabbable-eyewear/**
+    paths-ignore:
+      - README.md
+      - '.**'
+      - '.**/**'
+      - '!.github/workflows/deploy-grabbable-eyewear.yml'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +22,6 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
-         path: ./packages/grabbable-eyewear
          package-manager: pnpm
 
   deploy:
