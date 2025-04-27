@@ -23,6 +23,7 @@ export default defineConfig({
           items: [
             {slug: 'references/adjustment'},
             {slug: 'references/performance-rank'},
+            {slug: 'references/license'},
           ],
         },
       ]
