@@ -1,10 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-const repo = 'grabbable-eyewear' as const;
-const base = `${repo}/` as const;
-const github_link = `https://github.com/HiroM320/${repo}` as const;
-const booth_link = `https://hiromelon.booth.pm/items/6832055` as const;
+import { base, boothLink, githubLink } from './src/const'
 
 export default defineConfig({
   root: '.',
@@ -15,8 +12,8 @@ export default defineConfig({
     starlight({
       title: 'Grabbable Eyewear',
       social: [
-        { icon: 'github', label: 'GitHub', href: github_link },
-        { icon: 'external', label: 'Booth', href: booth_link }
+        { icon: 'github', label: 'GitHub', href: githubLink },
+        { icon: 'external', label: 'Booth', href: boothLink }
       ],
       sidebar: [
         {slug: 'installation'},
