@@ -20,7 +20,10 @@ import { LinkCard } from '@astrojs/starlight/components';
 2. `GrabbableEyewear/Eyewear/Model` 直下に使いたいメガネを配置してください。
     ![メガネをModelに配置する](../../assets/PutEyewearIntoModel.png)
     - メガネに MA Bone Proxy コンポーネントが含まれている場合、必ず削除してください。
-3. 配置したメガネの Transform コンポーネントの Position を `0` `0` `0` にしてください。
+3. ~~配置したメガネの Transform コンポーネントの Position を `0` `0` `0` にしてください。~~
+    :::danger
+    v0.1.3 項目3は一部の3Dモデルでは期待通り機能しないため、近日中に修正します。
+    :::
     ![Positionを0にする](../../assets/SetPositionToZero.png)
     - メガネの位置調整は後述の手順で行います。
 </Steps>
