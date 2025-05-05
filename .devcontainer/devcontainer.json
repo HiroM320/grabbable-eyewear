@@ -1,5 +1,5 @@
 {
-  "name": "Node for documents generation",
+  "name": "GrabbableEyewear doc",
   "build": {
     "dockerfile": "Dockerfile"
   },
