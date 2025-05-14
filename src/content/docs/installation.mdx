@@ -7,8 +7,6 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ## 要件
 
-- メガネの3Dモデルを持っている
-  - ギミックが入っている場合は競合する可能性があります
 - [Modular Avatar](https://modular-avatar.nadena.dev) が導入されている
 - `Expression Parameters` に `3` 以上の空きがある
   - パフォーマンスランクへの影響は [パフォーマンスランクへの影響](../references/performance-rank/) をご確認ください
@@ -16,16 +14,24 @@ import { LinkCard } from '@astrojs/starlight/components';
 ## アバターに導入する
 
 <Steps>
-1. `HiroMelon/GrabbableEyewear/` フォルダにある`GrabbableEyewear` プレハブをアバター直下に配置してください。
-2. `GrabbableEyewear/Eyewear/Model` 直下に使いたいメガネを配置してください。
+1. `Suikompany/GrabbableEyewear/` フォルダにある `GrabbableEyewear.prefab` をアバター直下に配置してください。
+    - メガネの位置調整は後述の手順で行います。
+</Steps>
+
+## メガネのモデルを差し替える
+
+お好みのメガネを使用する場合は、以下の手順に従ってください。
+付属メガネを使用する場合は、[メガネの位置調整](#メガネの位置調整) までスキップしてください。
+
+<Steps>
+1. `GrabbableEyewear/Eyewear/Model` 直下に使いたいメガネを配置してください。
     ![メガネをModelに配置する](../../assets/PutEyewearIntoModel.png)
     - メガネに MA Bone Proxy コンポーネントが含まれている場合、必ず削除してください。
-3. ~~配置したメガネの Transform コンポーネントの Position を `0` `0` `0` にしてください。~~
-    :::danger
-    v0.1.3 項目3は一部の3Dモデルでは期待通り機能しないため、近日中に修正します。
-    :::
-    ![Positionを0にする](../../assets/SetPositionToZero.png)
-    - メガネの位置調整は後述の手順で行います。
+2. 配置したメガネを、付属メガネと似た位置へ移動してください。
+    - 装着位置や手に持つ位置の調整は後の手順で行います。
+    - 元のメガネとサイズが大きく異なる場合、持ち判定の調整が必要になるかもしれません。ご了承ください。
+3. 付属メガネ `GrabbableEyewear/Eyewear/Model/GrabbableEyewearModel` を削除してください。
+    - 位置などを参考にするため削除せずに EditorOnly で残しておいても構いません。
 </Steps>
 
 ## メガネの位置調整
@@ -37,10 +43,10 @@ import { LinkCard } from '@astrojs/starlight/components';
     ![Constraint](../../assets/Constraint.png)
 2. `VRC Parent Constraint` コンポーネントの Sources の Weight が上から `1` `0` `0` であり、メガネが頭付近にあることを確認します。
     ![ConstraintWeight100](../../assets/ConstraintWeight100.png)
-3. 一つ目（Element 0）の Source Transform 右にある `EyewearHeadPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/Head/PBRoot/PBEnd/EyewearHeadPos` が選択されていることを確認します。
+3. 一つ目（Element 0）の Source Transform 右にある `EyewearHeadPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/ProxyHead/PBRoot/PBEnd/EyewearHeadPos` が選択されていることを確認します。
     ![EyewearHeadPos](../../assets/EyewearHeadPos.png)
     :::tip
-    Constraint の Transform をダブルクリックすると該当GameObjectが選択されるため、ヒエラルキーから探す手間が省けます。
+    Constraint の Transform をダブルクリックすると該当 GameObject が選択されるため、ヒエラルキーから探す手間が省けます。
     :::
 4. `EyewearHeadPos` を移動及び回転させて位置調整してください。
     :::tip
@@ -56,9 +62,9 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 <Steps>
 1. `GrabbableEyewear/Eyewear/Constraint` を選択します。
-2. `VRC Parent Constraint` コンポーネントの Sources の3つのWeightを上から `0` `1` `0` に変更し、メガネを右手に持つ位置へ移動させます。
+2. `VRC Parent Constraint` コンポーネントの Sources の3つの Weight を上から `0` `1` `0` に変更し、メガネを右手に持つ位置へ移動させます。
     ![ConstraintWeight010](../../assets/ConstraintWeight010.png)
-3. 二つ目（Element 1）の Source Transform 右にある `EyewearHandRPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/HandR/EyewearHandRPos` が選択されていることを確認します。
+3. 二つ目（Element 1）の Source Transform 右にある `EyewearHandRPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/ProxyHandR/EyewearHandRPos` が選択されていることを確認します。
 4. `EyewearHandRPos` を移動及び回転させて位置調整してください。
     :::note
     まずは伸ばした人差し指の第二関節（中央）から垂直にメガネを配置し、ゲーム内で実際に持ってみて細かく調節していきましょう。
@@ -70,18 +76,18 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 <Steps>
 1. `GrabbableEyewear/Eyewear/Constraint` を選択します。
-2. `VRC Parent Constraint` コンポーネントの Sources の3つのWeightを上から `0` `0` `1` に変更し、メガネを左手に持つ位置へ移動させます。
+2. `VRC Parent Constraint` コンポーネントの Sources の3つの Weight を上から `0` `0` `1` に変更し、メガネを左手に持つ位置へ移動させます。
     ![ConstraintWeight001](../../assets/ConstraintWeight001.png)
-3. 三つ目（Element 2）の Source Transform 右にある `EyewearHandLPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/HandL/EyewearHandLPos` が選択されていることを確認します。
+3. 三つ目（Element 2）の Source Transform 右にある `EyewearHandLPos` をダブルクリックし、`GrabbableEyewear/ConstraintSrc/ProxyHandL/EyewearHandLPos` が選択されていることを確認します。
 4. `EyewearHandLPos` を移動及び回転させて位置調整してください。
     :::note
-    先ほど設定した `EyewearHandRPos` から Position 及び Rotation をコピーし、Position X の正負を反転、Rotation Y を 180 度追加すると左右対称になるはずです。
+    先ほど設定した `EyewearHandRPos` から Position 及び Rotation をコピーし、Position X と Rotation Y, Z の正負を反転すると左右対称になるはずです。
     :::
 </Steps>
 
 ### Constraint を元に戻す
 
-位置調整完了後、 `VRC Parent Constraint` コンポーネント の Sources の Weight を上から `1` `0` `0` に戻してください。  
+位置調整完了後、 `VRC Parent Constraint` コンポーネント の Sources の Weight を上から `1` `0` `0` に戻してください。
 ![ConstraintWeight100](../../assets/ConstraintWeight100.png)
 戻さなくてもギミックに問題は発生しませんが、今後の調整が困難になります。
 
@@ -89,11 +95,11 @@ import { LinkCard } from '@astrojs/starlight/components';
 Prefab の Revert 機能を利用すると、お手軽に元の状態に戻せます。
 ![ConstraintRevert](../../assets/ConstraintRevert.png)
 1. 元の状態に戻したいコンポーネントの右側にある三点リーダをクリック
-2. `Modified Component` をクリックorマウスオーバー
+2. `Modified Component` をクリック
 3. `Revert` をクリック
 :::
 
 ### その他の調整について
 
-一般的なメガネのモデルであればこれ以上の調整は不要ですが、特殊な形状のモデルやメガネ以外のモデルに使用する場合、判定の調整が必要になる場合があります。  
-判定などその他の調整方法については [その他の調整](../references/adjustment/) をご覧ください。
+掴み判定やPBの調整方法については [その他の調整](../references/adjustment/) をご覧ください。
+特殊なメガネやメガネ以外のものに使用する場合はこの調整を推奨しています。

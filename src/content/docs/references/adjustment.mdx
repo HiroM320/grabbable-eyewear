@@ -6,5 +6,10 @@ title: その他の調整
 
 ## 手に持つ判定（Contact Receiver）を調整する
 
-1. 右手で持つ判定を `GrabbableEyewear/Eyewear/Contact/LocalHandROnEyewearContactRcv` の移動、回転、スケールで調整してください。
-2. 左手で持つ判定を `GrabbableEyewear/Eyewear/Contact/LocalHandLOnEyewearContactRcv` の移動、回転、スケールで調整してください。
+- 右手で持つ判定は `GrabbableEyewear/Eyewear/Contact/LocalHandROnEyewearContactRcv` を、左手で持つ判定は `GrabbableEyewear/Eyewear/Contact/LocalHandLOnEyewearContactRcv` の移動/回転で調整してください。
+  - VRC Contact Receiver コンポーネントそのものを調整しても問題ありません。
+
+## PhysBone を調整する
+
+- PhysBone は `GrabbableEyewear/ConstraintSrc/ProxyHead/PBRoot/PBEnd` を移動して調整してください。
+    - ほとんどの場合、3Dモデルの直線上に置くと良い感じになります。
