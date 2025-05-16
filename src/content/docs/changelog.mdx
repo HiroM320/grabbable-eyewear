@@ -1,10 +1,21 @@
 ---
 title: 変更履歴
 sidebar:
-  badge: v0.2.0
+  badge: v0.2.1
 ---
 
-## 0.2.0 2025-05-14
+## v0.2.1 2025-05-16
+
+- ExMenu の `PB OFF` を有効化しても PB が無効にならない不具合を修正
+  - v0.2.0 の GameObject のリネームにより発生していました。
+- PB 使用によるメガネ表示中に ExMenu の `PB OFF` を有効化すると、メガネが表示中のまま PB が無効化される不具合を修正
+- ExMenu の `Contact OFF` を `Moving OFF` にリネーム
+  - 使用パラメータもリネームしましたが、動作に変化はありません。
+- ExMenu の全項目がアバター切り替え後も保持されるように変更
+- `OFF（非表示）` で MAObjectToggle ではなく アニメーションを使用するように変更
+- 内部の変更: Animation Controller 及び Animation Clip の可読性向上
+
+## v0.2.0 2025-05-14
 
 - ディレクトリ名を `HiroMelon` から `Suikompany` に変更
 - メガネの3Dモデルを同梱
