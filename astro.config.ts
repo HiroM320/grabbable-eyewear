@@ -12,7 +12,7 @@ export default defineConfig({
     starlight({
       title: 'Grabbable Eyewear',
       social: [
-        { icon: 'twitter', label: 'Twitter', href: twitterLink },
+        { icon: 'x.com', label: 'X/Twitter', href: twitterLink },
         { icon: 'external', label: 'Booth', href: boothLink }
       ],
       sidebar: [
