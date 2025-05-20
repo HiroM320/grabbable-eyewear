@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-import { base, boothLink, githubLink } from './src/const'
+import { base, boothLink, twitterLink } from './src/const'
 
 export default defineConfig({
   root: '.',
@@ -12,7 +12,7 @@ export default defineConfig({
     starlight({
       title: 'Grabbable Eyewear',
       social: [
-        { icon: 'github', label: 'GitHub', href: githubLink },
+        { icon: 'twitter', label: 'Twitter', href: twitterLink },
         { icon: 'external', label: 'Booth', href: boothLink }
       ],
       sidebar: [
