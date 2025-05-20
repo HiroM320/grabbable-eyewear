@@ -34,3 +34,28 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
   - 無効: PhysBone が有効化されます。
 - `Moving OFF`
   - 有効: メガネの左右のレンズ付近を掴んで持ったりワールドに置いたりといった、手とジェスチャーによるメガネの配置変更が行われなくなります。
+
+## 付属メガネの仕様
+
+- ポリゴン数: 3528
+- マテリアル: 4
+  - フレーム3種（シルバー、ゴールド、ブラック）
+  - レンズ
+- テクスチャ: 5（フレーム3種, Matcap 用マスク, NormalMap）
+  - フレーム3種（シルバー、ゴールド、ブラック）
+  - フレームの Matcap
+  - フレームの NormalMap
+- シェイプキー: 4
+  - NosePad_OFF: 鼻当て（ノーズパッド）を隠す
+  - Temple_Long: つるを長くする
+  - Temple_Short: つるを短くする
+  - Temple_Open: つるを開く
+
+### イメージ
+
+- 三面図
+![ThreeView](../../assets/EyewearThreeView.png)
+- カラーバリエーション
+![EyewearColors](../../assets/EyewearColors.png)
+- ロゴのズーム
+![EyewearLogo](../../assets/EyewearLogo.png)
