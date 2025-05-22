@@ -11,6 +11,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Grabbable Eyewear',
+      locales: {
+        root: {
+          label: '日本語',
+          lang: 'ja',
+        },
+      },
       social: [
         { icon: 'x.com', label: 'X/Twitter', href: twitterLink },
         { icon: 'external', label: 'Booth', href: boothLink }
