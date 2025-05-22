@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  CLOUDFLARE_PROJECT_NAME: grabbable-eyewear-doc
+  CLOUDFLARE_PROJECT_NAME: suikompany
 
 jobs:
   build:

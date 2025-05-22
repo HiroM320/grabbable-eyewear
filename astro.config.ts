@@ -7,7 +7,7 @@ export default defineConfig({
   root: '.',
   base: base,
   trailingSlash: 'always',
-  site: 'https://hirom320.github.io',
+  site: 'https://suikompany.hiromelon.dev',
   integrations: [
     starlight({
       title: 'Grabbable Eyewear',
