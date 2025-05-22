@@ -1,4 +1,4 @@
-name: Deploy GrabbableEyewear to GitHub Pages
+name: Deploy GrabbableEyewear to Cloudflare Pages
 
 on:
   push:
@@ -10,6 +10,9 @@ on:
       - '.**/**'
       - '!.github/workflows/deploy.yml'
   workflow_dispatch:
+
+env:
+  CLOUDFLARE_PROJECT_NAME: grabbable-eyewear-doc
 
 jobs:
   build:
@@ -26,14 +29,24 @@ jobs:
 
   deploy:
     permissions:
-      pages: write
-      id-token: write
+      contents: read
+      deployments: write
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: cloudflare-pages
+      url: ${{ steps.deployment.outputs.deployment-url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Download built files
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: dist
+      - name: Deploy to Cloudflare Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: cloudflare/wrangler-action@v3
+        with:
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
