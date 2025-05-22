@@ -21,6 +21,7 @@ export default defineConfig({
         { icon: 'x.com', label: 'X/Twitter', href: twitterLink },
         { icon: 'external', label: 'Booth', href: boothLink }
       ],
+      lastUpdated: true,
       sidebar: [
         {slug: 'installation'},
         {slug: 'feature'},
