@@ -1,4 +1,4 @@
-name: Deploy GrabbableEyewear to Cloudflare Pages
+name: Deploy GrabbableEyewear docs to Cloudflare Pages
 
 on:
   push:
