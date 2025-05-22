@@ -19,13 +19,32 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
+    outputs:
+      artifact: ${{ steps.upload-artifact.outputs.artifact-id }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-         package-manager: pnpm
+          version: 10
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build site
+        run: pnpm build
+      - name: Upload artifact
+        id: upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: grabbable-eyewear
+          path: dist/*
 
   deploy:
     permissions:
@@ -40,13 +59,13 @@ jobs:
       - name: Download built files
         uses: actions/download-artifact@v4
         with:
-          name: github-pages
-          path: dist
+          artifact-ids: ${{needs.build.outputs.artifact}}
+          path: grabbable-eyewear
       - name: Deploy to Cloudflare Pages
         id: deployment
         uses: cloudflare/wrangler-action@v3
         with:
-          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }}
+          command: pages deploy grabbable-eyewear --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
