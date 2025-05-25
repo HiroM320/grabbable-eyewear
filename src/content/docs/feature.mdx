@@ -5,6 +5,7 @@ title: 機能
 import { YouTube } from '@astro-community/astro-embed-youtube';
 
 ## 基本機能
+
 - PhysBone による掴み（Grab）と固定（Pose）
   - メガネの中央前方を掴む（Grabする）とメガネを上下に動かせます。
   - PhysBone を使用しているため、他人が動かすことも可能です。
@@ -17,8 +18,11 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
 - 非着用時、メガネが視界に映る
   - HeadChop によってメガネが表示されます。
 
-これらの基本機能は [デモ動画](https://youtu.be/UwoYmtyJvME) にて紹介しています。
+いずれの機能も ExMenu から無効化できます。
+
+[デモ動画](https://youtu.be/UwoYmtyJvME) にて実際の挙動を確認できます。
 <YouTube id="UwoYmtyJvME" />
+
 
 
 ## エクスプレッションメニュー（Expressions Menu）
@@ -32,8 +36,10 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
   - 有効: PhysBone が無効化され、メガネの中央付近を掴んで動かせなくなります。
       Grab/Poseされていた場合、元の位置に戻ります。
   - 無効: PhysBone が有効化されます。
-- `Moving OFF`
+- `HoldOrRelease OFF`
   - 有効: メガネの左右のレンズ付近を掴んで持ったりワールドに置いたりといった、手とジェスチャーによるメガネの配置変更が行われなくなります。
+- `KeepHidden`
+  - 有効: メガネが非表示のままになります。
 
 ## 付属メガネの仕様
 
