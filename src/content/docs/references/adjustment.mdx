@@ -13,3 +13,10 @@ title: その他の調整
 
 - PhysBone は `GrabbableEyewear/ConstraintSrc/ProxyHead/PBRoot/PBEnd` を移動して調整してください。
   - ほとんどの場合、3Dモデルより少し外側に置くと良い感じになります。
+
+## メガネの着用判定を調整する
+
+現在（v1.0.0+）メガネの着用判定を小さめ設定しておりユーザーによっては再着用が難しいため、調整方法を案内します。今後のアップデートで着用判定を大きめにし、必要に応じて小さくしてもらう方向にシフトする予定です。
+
+- 着用判定を大きく/小さくするには、`GrabbableEyewear/LocalEyewearOnHeadContactRcv` の Scale を変更してください。
+  - VRC Contact Receiver コンポーネントの `Shape > Radius` を変更しても問題ありません。
