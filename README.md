@@ -1,1 +1,1 @@
-https://vrc.hiromelon.dev/grabbable-eyewear/
+https://suikompany.hiromelon.dev/grabbable-eyewear/
